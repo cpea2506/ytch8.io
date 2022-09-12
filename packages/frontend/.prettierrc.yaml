@@ -1,4 +1,6 @@
 trailingComma: "all"
 tabWidth: 4
+plugins:
+    - "prettier-plugin-svelte"
 pluginSearchDirs:
     - "."
