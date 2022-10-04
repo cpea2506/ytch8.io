@@ -1,6 +1,7 @@
 import cors, { CorsOptions } from "cors";
 import CORSWhitelist from "./cors";
 import express, { Request, Response, Handler } from "express";
+import userRouter from "@/user/router";
 import morgan from "morgan";
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(morgan("logger_format") as Handler);
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/api/v1/user", userRouter);
 app.use("/", (_: Request, res: Response) =>
     res.status(400).send("Hello cai dmm luon"),
 );

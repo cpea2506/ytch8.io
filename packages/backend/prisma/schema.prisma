@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "cockroachdb"
+    url      = env("DATABASE_URL")
+}
+
+enum Role {
+    Admin
+    Player
+}
+
+model User {
+    id          BigInt @id(map: "primary") @default(autoincrement())
+    username    String // use for login
+    accountName String // use for display
+    password    String
+    role        Role   @default(Player)
+    Age         Int
+}
+
+model Game {
+    id          BigInt   @id(map: "primary") @default(autoincrement())
+    name        String
+    description String
+    authorName  String
+    category    Category @relation(fields: [categoryId], references: [id])
+    categoryId  BigInt
+    dateCreated DateTime @default(now())
+    downloadNum Int      @default(0)
+    playedTime  Int      @default(0)
+}
+
+model DownloadDetail {
+    id          BigInt   @id(map: "primary") @default(autoincrement())
+    accountName String
+    Date        DateTime @default(now())
+}
+
+model Category {
+    id   BigInt @id(map: "primary") @default(autoincrement())
+    name String
+    age  Int
+    Game Game[]
+}

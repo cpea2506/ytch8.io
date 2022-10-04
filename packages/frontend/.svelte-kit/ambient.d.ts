@@ -26,6 +26,7 @@
  * ```
  */
 declare module '$env/static/private' {
+	export const npm_package_devDependencies_lint_staged: string;
 	export const MANPATH: string;
 	export const STARSHIP_SHELL: string;
 	export const npm_package_devDependencies_prettier: string;
@@ -41,8 +42,8 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies__types_cookie: string;
 	export const HOMEBREW_REPOSITORY: string;
 	export const TMPDIR: string;
-	export const npm_config_init_license: string;
 	export const npm_package_scripts_lint: string;
+	export const npm_config_init_license: string;
 	export const npm_package_scripts_backend: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte3: string;
 	export const LUNARVIM_CACHE_DIR: string;
@@ -113,9 +114,9 @@ declare module '$env/static/private' {
 	export const npm_config_save_prefix: string;
 	export const npm_config_strict_ssl: string;
 	export const HOMEBREW_PREFIX: string;
+	export const npm_package_devDependencies_husky: string;
 	export const npm_config_version_git_message: string;
 	export const npm_package_devDependencies_stylelint_config_recommended_scss: string;
-	export const npm_package_devDependencies_husky: string;
 	export const STARSHIP_SESSION_KEY: string;
 	export const LOGNAME: string;
 	export const YARN_WRAP_OUTPUT: string;
@@ -172,6 +173,7 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
+		npm_package_devDependencies_lint_staged: string;
 		MANPATH: string;
 		STARSHIP_SHELL: string;
 		npm_package_devDependencies_prettier: string;
@@ -187,8 +189,8 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies__types_cookie: string;
 		HOMEBREW_REPOSITORY: string;
 		TMPDIR: string;
-		npm_config_init_license: string;
 		npm_package_scripts_lint: string;
+		npm_config_init_license: string;
 		npm_package_scripts_backend: string;
 		npm_package_devDependencies_eslint_plugin_svelte3: string;
 		LUNARVIM_CACHE_DIR: string;
@@ -259,9 +261,9 @@ declare module '$env/dynamic/private' {
 		npm_config_save_prefix: string;
 		npm_config_strict_ssl: string;
 		HOMEBREW_PREFIX: string;
+		npm_package_devDependencies_husky: string;
 		npm_config_version_git_message: string;
 		npm_package_devDependencies_stylelint_config_recommended_scss: string;
-		npm_package_devDependencies_husky: string;
 		STARSHIP_SESSION_KEY: string;
 		LOGNAME: string;
 		YARN_WRAP_OUTPUT: string;
