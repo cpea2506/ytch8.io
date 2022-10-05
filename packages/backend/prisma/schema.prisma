@@ -16,24 +16,36 @@ enum Role {
 }
 
 model User {
-    id          BigInt @id(map: "primary") @default(autoincrement())
+    id          BigInt    @id(map: "primary") @default(autoincrement())
     username    String // use for login
     accountName String // use for display
     password    String
-    role        Role   @default(Player)
+    role        Role      @default(Player)
     Age         Int
+    Comment     Comment[]
 }
 
 model Game {
-    id          BigInt   @id(map: "primary") @default(autoincrement())
+    id          BigInt    @id(map: "primary") @default(autoincrement())
     name        String
     description String
     authorName  String
-    category    Category @relation(fields: [categoryId], references: [id])
+    category    Category  @relation(fields: [categoryId], references: [id])
     categoryId  BigInt
-    dateCreated DateTime @default(now())
-    downloadNum Int      @default(0)
-    playedTime  Int      @default(0)
+    dateCreated DateTime  @default(now())
+    downloadNum Int       @default(0)
+    playedTime  Int       @default(0)
+    Comment     Comment[]
+}
+
+model Comment {
+    id          BigInt   @id(map: "primary") @default(autoincrement())
+    Game        Game?    @relation(fields: [gameId], references: [id])
+    gameId      BigInt?
+    User        User?    @relation(fields: [userId], references: [id])
+    userId      BigInt?
+    content     String
+    dateCreated DateTime
 }
 
 model DownloadDetail {
