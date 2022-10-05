@@ -1,5 +1,5 @@
 import express from "express";
-import app from "./config/app";
+import app from "./app";
 import { PORT } from "@/config/env";
 import { createServer, Server } from "http";
 
