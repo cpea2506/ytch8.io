@@ -21,21 +21,21 @@ model User {
     accountName String // use for display
     password    String
     role        Role      @default(Player)
-    Age         Int
+    age         Int
     Comment     Comment[]
 }
 
 model Game {
-    id          BigInt    @id(map: "primary") @default(autoincrement())
-    name        String
-    description String
-    authorName  String
-    category    Category  @relation(fields: [categoryId], references: [id])
-    categoryId  BigInt
-    dateCreated DateTime  @default(now())
-    downloadNum Int       @default(0)
-    playedTime  Int       @default(0)
-    Comment     Comment[]
+    id             BigInt           @id(map: "primary") @default(autoincrement())
+    name           String
+    description    String
+    authorName     String
+    dateCreated    DateTime         @default(now())
+    donwloadDetail DownloadDetail[]
+    playedTime     Int              @default(0)
+    Comment        Comment[]
+    Category       Category?        @relation(fields: [categoryId], references: [id])
+    categoryId     BigInt?
 }
 
 model Comment {
@@ -51,7 +51,9 @@ model Comment {
 model DownloadDetail {
     id          BigInt   @id(map: "primary") @default(autoincrement())
     accountName String
-    Date        DateTime @default(now())
+    date        DateTime @default(now())
+    Game        Game?    @relation(fields: [gameId], references: [id])
+    gameId      BigInt?
 }
 
 model Category {
