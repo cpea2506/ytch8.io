@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
         "baseUrl": "./",
-        "target": "esnext",
+        "target": "ESNext",
         "sourceMap": true,
         "outDir": "dist",
         "strict": true,
-        "lib": ["esnext"],
-        "moduleResolution": "nodenext",
+        "lib": ["ESNext"],
+        "moduleResolution": "NodeNext",
         "esModuleInterop": true,
         "paths": {
             "@/*": ["./src/*"]
