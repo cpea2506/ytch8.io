@@ -48,5 +48,8 @@
             "eslint_d --fix"
         ]
     },
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "svelte-icons": "^2.1.0"
+    }
 }

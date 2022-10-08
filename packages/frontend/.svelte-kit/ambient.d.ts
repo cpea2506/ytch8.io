@@ -5,7 +5,7 @@
 /// <reference types="@sveltejs/kit" />
 
 /**
- * Environment variables [loaded by Vite](https://vitejs.dev/guide/env-and-mode.html#env-files) from `.env` files and `process.env`. Like [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), this module cannot be imported into client-side code. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#kit-env-publicprefix).
+ * Environment variables [loaded by Vite](https://vitejs.dev/guide/env-and-mode.html#env-files) from `.env` files and `process.env`. Like [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), this module cannot be imported into public-facing code. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env).
  * 
  * _Unlike_ [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), the values exported from this module are statically injected into your bundle at build time, enabling optimisations like dead code elimination.
  * 
@@ -26,16 +26,15 @@
  * ```
  */
 declare module '$env/static/private' {
-	export const npm_package_devDependencies_lint_staged: string;
-	export const MANPATH: string;
 	export const STARSHIP_SHELL: string;
+	export const MANPATH: string;
 	export const npm_package_devDependencies_prettier: string;
+	export const TERM_PROGRAM: string;
 	export const NODE: string;
 	export const INIT_CWD: string;
-	export const LUNARVIM_RUNTIME_DIR: string;
-	export const npm_config_version_git_tag: string;
 	export const npm_package_devDependencies_typescript: string;
 	export const npm_package_devDependencies_prettier_plugin_svelte: string;
+	export const npm_config_version_git_tag: string;
 	export const TERM: string;
 	export const SHELL: string;
 	export const npm_package_devDependencies_vite: string;
@@ -44,16 +43,13 @@ declare module '$env/static/private' {
 	export const TMPDIR: string;
 	export const npm_package_scripts_lint: string;
 	export const npm_config_init_license: string;
-	export const npm_package_scripts_backend: string;
+	export const TERM_PROGRAM_VERSION: string;
 	export const npm_package_devDependencies_eslint_plugin_svelte3: string;
-	export const LUNARVIM_CACHE_DIR: string;
-	export const WINDOWID: string;
 	export const npm_package_scripts_dev: string;
 	export const ZDOTDIR: string;
-	export const npm_package_private: string;
-	export const npm_config_registry: string;
 	export const npm_package_devDependencies_svelte_preprocess: string;
 	export const npm_package_devDependencies__sveltejs_kit: string;
+	export const npm_config_registry: string;
 	export const PNPM_HOME: string;
 	export const npm_package_devDependencies_stylelint_config_html: string;
 	export const npm_package_readmeFilename: string;
@@ -72,7 +68,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
 	export const FZF_DEFAULT_OPTS: string;
 	export const npm_package_devDependencies_svelte: string;
-	export const LVIM_DEV_MODE: string;
+	export const WEZTERM_EXECUTABLE_DIR: string;
 	export const npm_package_devDependencies__typescript_eslint_parser: string;
 	export const PATH: string;
 	export const npm_config_argv: string;
@@ -82,41 +78,37 @@ declare module '$env/static/private' {
 	export const PWD: string;
 	export const npm_package_devDependencies_tailwindcss: string;
 	export const npm_package_scripts_preview: string;
-	export const KITTY_PID: string;
 	export const EDITOR: string;
 	export const npm_lifecycle_event: string;
-	export const npm_package_dependencies_concurrently: string;
 	export const LANG: string;
-	export const npm_package_name: string;
 	export const npm_package_lint_staged___scss_1: string;
+	export const npm_package_name: string;
+	export const WEZTERM_PANE: string;
 	export const npm_package_lint_staged___scss_0: string;
-	export const NVIM_LOG_FILE: string;
-	export const npm_config_version_commit_hooks: string;
 	export const npm_package_devDependencies_sass: string;
 	export const npm_package_scripts_build: string;
+	export const npm_config_version_commit_hooks: string;
 	export const XPC_FLAGS: string;
-	export const npm_config_bin_links: string;
 	export const npm_package_devDependencies_stylelint: string;
-	export const FORCE_COLOR: string;
-	export const LUNARVIM_CONFIG_DIR: string;
-	export const npm_config_wrap_output: string;
-	export const NVIM: string;
+	export const npm_config_bin_links: string;
 	export const npm_package_devDependencies_eslint_config_prettier: string;
 	export const XPC_SERVICE_NAME: string;
-	export const npm_package_version: string;
+	export const WEZTERM_UNIX_SOCKET: string;
 	export const npm_package_devDependencies__sveltejs_adapter_auto: string;
+	export const npm_package_version: string;
 	export const npm_package_devDependencies_svelte_check: string;
+	export const npm_package_devDependencies_daisyui: string;
 	export const npm_package_devDependencies_autoprefixer: string;
 	export const SHLVL: string;
 	export const HOME: string;
 	export const npm_package_type: string;
-	export const TERMINFO: string;
 	export const npm_config_save_prefix: string;
 	export const npm_config_strict_ssl: string;
 	export const HOMEBREW_PREFIX: string;
-	export const npm_package_devDependencies_husky: string;
-	export const npm_config_version_git_message: string;
+	export const LIBGL_ALWAYS_SOFTWARE: string;
 	export const npm_package_devDependencies_stylelint_config_recommended_scss: string;
+	export const npm_config_version_git_message: string;
+	export const WEZTERM_CONFIG_DIR: string;
 	export const STARSHIP_SESSION_KEY: string;
 	export const LOGNAME: string;
 	export const YARN_WRAP_OUTPUT: string;
@@ -125,29 +117,25 @@ declare module '$env/static/private' {
 	export const npm_lifecycle_script: string;
 	export const npm_package_lint_staged____ts_svelte__0: string;
 	export const npm_package_lint_staged____ts_svelte__1: string;
-	export const npm_package_scripts_frontend: string;
-	export const VIMRUNTIME: string;
-	export const KITTY_INSTALLATION_DIR: string;
-	export const KITTY_WINDOW_ID: string;
 	export const npm_config_version_git_sign: string;
 	export const npm_config_ignore_scripts: string;
 	export const npm_config_user_agent: string;
 	export const INFOPATH: string;
 	export const HOMEBREW_CELLAR: string;
 	export const npm_package_devDependencies_eslint_d: string;
+	export const WEZTERM_EXECUTABLE: string;
 	export const npm_config_init_version: string;
 	export const npm_config_ignore_optional: string;
 	export const HOMEBREW_NO_ENV_HINTS: string;
-	export const npm_package_workspaces_0: string;
+	export const WEZTERM_CONFIG_FILE: string;
 	export const npm_package_scripts_check: string;
-	export const KITTY_PUBLIC_KEY: string;
 	export const COLORTERM: string;
 	export const npm_node_execpath: string;
 	export const npm_config_version_tag_prefix: string;
 }
 
 /**
- * Similar to [`$env/static/private`](https://kit.svelte.dev/docs/modules#$env-static-private), except that it only includes environment variables that begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#kit-env-publicprefix) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
+ * Similar to [`$env/static/private`](https://kit.svelte.dev/docs/modules#$env-static-private), except that it only includes environment variables that begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
  * 
  * Values are replaced statically at build time.
  * 
@@ -160,9 +148,9 @@ declare module '$env/static/public' {
 }
 
 /**
- * This module provides access to runtime environment variables, as defined by the platform you're running on. For example if you're using [`adapter-node`](https://github.com/sveltejs/kit/tree/master/packages/adapter-node) (or running [`vite preview`](https://kit.svelte.dev/docs/cli)), this is equivalent to `process.env`. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#kit-env-publicprefix).
+ * This module provides access to runtime environment variables, as defined by the platform you're running on. For example if you're using [`adapter-node`](https://github.com/sveltejs/kit/tree/master/packages/adapter-node) (or running [`vite preview`](https://kit.svelte.dev/docs/cli)), this is equivalent to `process.env`. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env).
  * 
- * This module cannot be imported into client-side code.
+ * This module cannot be imported into public-facing code.
  * 
  * ```ts
  * import { env } from '$env/dynamic/private';
@@ -173,16 +161,15 @@ declare module '$env/static/public' {
  */
 declare module '$env/dynamic/private' {
 	export const env: {
-		npm_package_devDependencies_lint_staged: string;
-		MANPATH: string;
 		STARSHIP_SHELL: string;
+		MANPATH: string;
 		npm_package_devDependencies_prettier: string;
+		TERM_PROGRAM: string;
 		NODE: string;
 		INIT_CWD: string;
-		LUNARVIM_RUNTIME_DIR: string;
-		npm_config_version_git_tag: string;
 		npm_package_devDependencies_typescript: string;
 		npm_package_devDependencies_prettier_plugin_svelte: string;
+		npm_config_version_git_tag: string;
 		TERM: string;
 		SHELL: string;
 		npm_package_devDependencies_vite: string;
@@ -191,16 +178,13 @@ declare module '$env/dynamic/private' {
 		TMPDIR: string;
 		npm_package_scripts_lint: string;
 		npm_config_init_license: string;
-		npm_package_scripts_backend: string;
+		TERM_PROGRAM_VERSION: string;
 		npm_package_devDependencies_eslint_plugin_svelte3: string;
-		LUNARVIM_CACHE_DIR: string;
-		WINDOWID: string;
 		npm_package_scripts_dev: string;
 		ZDOTDIR: string;
-		npm_package_private: string;
-		npm_config_registry: string;
 		npm_package_devDependencies_svelte_preprocess: string;
 		npm_package_devDependencies__sveltejs_kit: string;
+		npm_config_registry: string;
 		PNPM_HOME: string;
 		npm_package_devDependencies_stylelint_config_html: string;
 		npm_package_readmeFilename: string;
@@ -219,7 +203,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies__typescript_eslint_eslint_plugin: string;
 		FZF_DEFAULT_OPTS: string;
 		npm_package_devDependencies_svelte: string;
-		LVIM_DEV_MODE: string;
+		WEZTERM_EXECUTABLE_DIR: string;
 		npm_package_devDependencies__typescript_eslint_parser: string;
 		PATH: string;
 		npm_config_argv: string;
@@ -229,41 +213,37 @@ declare module '$env/dynamic/private' {
 		PWD: string;
 		npm_package_devDependencies_tailwindcss: string;
 		npm_package_scripts_preview: string;
-		KITTY_PID: string;
 		EDITOR: string;
 		npm_lifecycle_event: string;
-		npm_package_dependencies_concurrently: string;
 		LANG: string;
-		npm_package_name: string;
 		npm_package_lint_staged___scss_1: string;
+		npm_package_name: string;
+		WEZTERM_PANE: string;
 		npm_package_lint_staged___scss_0: string;
-		NVIM_LOG_FILE: string;
-		npm_config_version_commit_hooks: string;
 		npm_package_devDependencies_sass: string;
 		npm_package_scripts_build: string;
+		npm_config_version_commit_hooks: string;
 		XPC_FLAGS: string;
-		npm_config_bin_links: string;
 		npm_package_devDependencies_stylelint: string;
-		FORCE_COLOR: string;
-		LUNARVIM_CONFIG_DIR: string;
-		npm_config_wrap_output: string;
-		NVIM: string;
+		npm_config_bin_links: string;
 		npm_package_devDependencies_eslint_config_prettier: string;
 		XPC_SERVICE_NAME: string;
-		npm_package_version: string;
+		WEZTERM_UNIX_SOCKET: string;
 		npm_package_devDependencies__sveltejs_adapter_auto: string;
+		npm_package_version: string;
 		npm_package_devDependencies_svelte_check: string;
+		npm_package_devDependencies_daisyui: string;
 		npm_package_devDependencies_autoprefixer: string;
 		SHLVL: string;
 		HOME: string;
 		npm_package_type: string;
-		TERMINFO: string;
 		npm_config_save_prefix: string;
 		npm_config_strict_ssl: string;
 		HOMEBREW_PREFIX: string;
-		npm_package_devDependencies_husky: string;
-		npm_config_version_git_message: string;
+		LIBGL_ALWAYS_SOFTWARE: string;
 		npm_package_devDependencies_stylelint_config_recommended_scss: string;
+		npm_config_version_git_message: string;
+		WEZTERM_CONFIG_DIR: string;
 		STARSHIP_SESSION_KEY: string;
 		LOGNAME: string;
 		YARN_WRAP_OUTPUT: string;
@@ -272,22 +252,18 @@ declare module '$env/dynamic/private' {
 		npm_lifecycle_script: string;
 		npm_package_lint_staged____ts_svelte__0: string;
 		npm_package_lint_staged____ts_svelte__1: string;
-		npm_package_scripts_frontend: string;
-		VIMRUNTIME: string;
-		KITTY_INSTALLATION_DIR: string;
-		KITTY_WINDOW_ID: string;
 		npm_config_version_git_sign: string;
 		npm_config_ignore_scripts: string;
 		npm_config_user_agent: string;
 		INFOPATH: string;
 		HOMEBREW_CELLAR: string;
 		npm_package_devDependencies_eslint_d: string;
+		WEZTERM_EXECUTABLE: string;
 		npm_config_init_version: string;
 		npm_config_ignore_optional: string;
 		HOMEBREW_NO_ENV_HINTS: string;
-		npm_package_workspaces_0: string;
+		WEZTERM_CONFIG_FILE: string;
 		npm_package_scripts_check: string;
-		KITTY_PUBLIC_KEY: string;
 		COLORTERM: string;
 		npm_node_execpath: string;
 		npm_config_version_tag_prefix: string;
@@ -296,7 +272,7 @@ declare module '$env/dynamic/private' {
 }
 
 /**
- * Similar to [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), but only includes variables that begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#kit-env-publicprefix) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
+ * Similar to [`$env/dynamic/private`](https://kit.svelte.dev/docs/modules#$env-dynamic-private), but only includes variables that begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) (which defaults to `PUBLIC_`), and can therefore safely be exposed to client-side code.
  * 
  * Note that public dynamic environment variables must all be sent from the server to the client, causing larger network requests — when possible, use `$env/static/public` instead.
  * 

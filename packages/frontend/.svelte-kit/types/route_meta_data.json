@@ -1,0 +1,11 @@
+{
+	"": [
+		"src/routes/+page.ts"
+	],
+	"login": [
+		"src/routes/login/+page.ts"
+	],
+	"register": [
+		"src/routes/register/+page.ts"
+	]
+}
