@@ -89,6 +89,7 @@ declare module '$env/static/private' {
 	export const npm_package_scripts_build: string;
 	export const npm_config_version_commit_hooks: string;
 	export const XPC_FLAGS: string;
+	export const npm_package_dependencies_svelte_icons: string;
 	export const npm_package_devDependencies_stylelint: string;
 	export const npm_config_bin_links: string;
 	export const npm_package_devDependencies_eslint_config_prettier: string;
@@ -224,6 +225,7 @@ declare module '$env/dynamic/private' {
 		npm_package_scripts_build: string;
 		npm_config_version_commit_hooks: string;
 		XPC_FLAGS: string;
+		npm_package_dependencies_svelte_icons: string;
 		npm_package_devDependencies_stylelint: string;
 		npm_config_bin_links: string;
 		npm_package_devDependencies_eslint_config_prettier: string;
