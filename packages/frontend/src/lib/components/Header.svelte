@@ -1,39 +1,47 @@
-<script lang="ts">
+<script>
     import UploadIcon from "svelte-icons/ti/TiUpload.svelte";
 </script>
 
-<div class="h-12">
-    <div
-        class="navbar min-h-8 fixed bg-base-100 z-[100] shadow shadow-neutral-content"
-    >
-        <div class="flex-1">
-            <a href="/">
-                <img src="/images/logo.svg" alt="ytch8 logo" />
+<div class="flex h-[50px] items-center bg-white px-5 shadow">
+    <div class="flex h-full flex-1">
+        <a href="/" class="flex items-center">
+            <img src="/images/logo.svg" alt="ytch8 logo" />
+        </a>
+        <div class="ml-[10px] flex">
+            <a class="header-btn" href="/">Browse Games</a>
+            <a class="header-btn" href="/game/new">
+                <span class="h-4 w-4">
+                    <UploadIcon />
+                </span>
+                Upload Game
             </a>
-            <div class="flex gap-2 ml-2 flex-wrap h-full">
-                <a class="btn btn-sm btn-ghost" href="/">Browse Games</a>
-                <a class="btn btn-sm btn-ghost" href="/game/new">
-                    <span class="w-4 h-4">
-                        <UploadIcon />
-                    </span>
-                    Upload Game
-                </a>
-                <a class="btn btn-sm btn-ghost" href="/">Game Jams</a>
-            </div>
-        </div>
-        <div class="flex-none gap-2">
-            <form class="form-control">
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    class="input input-sm input-bordered focus:outline-none"
-                />
-            </form>
-            <a href="/login" class="btn btn-sm btn-outline btn-primary">Login</a
-            >
-            <a href="/register" class="btn btn-sm btn-outline btn-secondary">
-                Register
-            </a>
+            <a class="header-btn" href="/">Game Jams</a>
         </div>
     </div>
+    <div class="flex items-center gap-2">
+        <form class="form-control">
+            <input
+                type="text"
+                placeholder="Search..."
+                class="input p-1.5 text-sm"
+            />
+        </form>
+        <a href="/login" class="btn-outline">Login</a>
+        <a href="/register" class="btn-outline btn-secondary"> Register </a>
+    </div>
 </div>
+
+<style lang="scss">
+    .header-btn {
+        @apply flex h-full items-center font-bold;
+
+        margin: 0 10px;
+        padding: 5px 0;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+
+        &:hover {
+            border-bottom: 4px solid #ff2449;
+        }
+    }
+</style>
