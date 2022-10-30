@@ -4,12 +4,12 @@
     import Input from "$components/core/Input.svelte";
 </script>
 
-<div class="flex-center h-[calc(100vh-50px)]">
+<div class="flex-center h-[100%] pt-16">
     <form class="w-[500px] rounded border bg-white">
         <div class="max-h-20 border-b p-8">
             <h1 class="text-xl font-bold">
                 Log into your <span class="font-medium"
-                    >ytch<span class="text-[#ff2e51]">8.</span>io</span
+                    >ytch<span class="text-primary">8.</span>io</span
                 >
                 account
             </h1>
@@ -30,7 +30,7 @@
             <div class="flex items-center border-b">
                 <div class="mb-4">
                     <Button>Log in</Button>
-                    <span class="ml-2 text-[#858585]">
+                    <span class="ml-2 text-dim-200">
                         or
                         <a
                             href="/login"

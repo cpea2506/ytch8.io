@@ -3,7 +3,7 @@
     import "../app.scss";
 </script>
 
-<main class="flex flex-col bg-[#f4f4f4]">
+<main class="flex min-h-screen flex-col bg-white-100">
     <Header />
     <slot />
 </main>

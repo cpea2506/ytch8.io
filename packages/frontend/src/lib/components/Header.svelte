@@ -2,12 +2,12 @@
     import UploadIcon from "svelte-icons/ti/TiUpload.svelte";
 </script>
 
-<div class="flex h-[50px] items-center bg-white px-5 shadow">
-    <div class="flex h-full flex-1">
+<div class="flex h-14 items-center bg-white px-5 shadow">
+    <div class="flex flex-1">
         <a href="/" class="flex items-center">
             <img src="/images/logo.svg" alt="ytch8 logo" />
         </a>
-        <div class="ml-[10px] flex">
+        <div class="ml-2 flex">
             <a class="header-btn" href="/">Browse Games</a>
             <a class="header-btn" href="/game/new">
                 <span class="h-4 w-4">
@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="flex items-center gap-2">
-        <form class="form-control">
+        <form>
             <input
                 type="text"
                 placeholder="Search..."
