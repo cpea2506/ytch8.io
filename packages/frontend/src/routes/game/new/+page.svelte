@@ -21,11 +21,9 @@
     };
 </script>
 
-<div class="my-8 mx-auto w-[960px] rounded-lg border bg-white shadow">
-    <section class="flex min-h-[80px] items-center border-b px-10">
-        <h1 class="text-xl font-bold">🌈 Upload new game</h1>
-    </section>
-    <div class="flex py-5 px-[40px]">
+<div class="my-5 mx-auto w-[960px] rounded border bg-white shadow">
+    <div class="border-b p-5 text-2xl font-bold">🌈 Upload new game</div>
+    <div class="flex p-5">
         <div class="flex-1">
             <div>
                 <Input label="Title" class="w-[524px]" />
@@ -45,7 +43,7 @@
             </div>
             <h2 class="title">Detail</h2>
             <div class="flex flex-col">
-                <div class="mb-6">
+                <div class="mb-5">
                     <div class="font-bold">Genres</div>
                     <select class="input w-[524px] appearance-none">
                         <option disabled selected>No Genre</option>
@@ -66,12 +64,12 @@
                     placeholder="This will markup your content game page"
                 />
             </div>
-            <Button class="mt-6">Save me</Button>
+            <Button class="mt-5">Save me</Button>
         </div>
         <div>
             {#if imageSrc}
                 <img
-                    class="h-[300px] w-[315px] shadow"
+                    class="h-[300px] w-[315px] rounded shadow"
                     src={imageSrc}
                     alt="game cover"
                 />
