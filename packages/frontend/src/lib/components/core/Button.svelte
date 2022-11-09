@@ -7,14 +7,14 @@
     let extraClass = "";
     export { extraClass as class };
 
-    $: if (extraClass.length > 0) {
+    if (extraClass.length > 0) {
         // add space before to distinguish from other classes
         extraClass = ` ${extraClass}`;
     }
 </script>
 
 <button
-    class={extraClass}
+    class="flex justify-between{extraClass}"
     class:btn-outline={outline}
     class:btn={!outline}
     on:click

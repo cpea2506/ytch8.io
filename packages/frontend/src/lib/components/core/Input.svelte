@@ -5,14 +5,14 @@
     let extraClass = "";
     export { extraClass as class };
 
-    $: if (extraClass.length > 0) {
+    if (extraClass.length > 0) {
         extraClass = ` ${extraClass}`;
     }
 </script>
 
-<div class="mb-6">
+<div class="mb-5">
     <label for={label}>
-        <div class="font-semibold">{label}</div>
+        <div class="text-sm font-semibold">{label}</div>
         <input
             id={label}
             {placeholder}
