@@ -14,7 +14,7 @@
 </script>
 
 <button
-    class="flex justify-between{extraClass}"
+    class="inline-flex justify-between{extraClass}"
     class:btn-outline={outline}
     class:btn={!outline}
     on:click
