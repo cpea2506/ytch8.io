@@ -1,30 +1,32 @@
 <script>
     import UploadIcon from "svelte-icons/ti/TiUpload.svelte";
+    import { page } from "$app/stores";
+
+    $: currentUrl = $page.url.pathname;
 </script>
 
-<div class="flex h-14 items-center bg-white px-5 shadow">
-    <div class="flex flex-1">
-        <a href="/" class="flex items-center">
+<div class="flex bg-white px-5 shadow">
+    <div class="flex flex-1 gap-1">
+        <a href="/" class="my-auto">
             <img src="/images/logo.svg" alt="ytch8 logo" />
         </a>
-        <div class="ml-2 flex">
-            <a class="header-btn" href="/">Browse Games</a>
-            <a class="header-btn" href="/game/new">
-                <span class="h-4 w-4">
-                    <UploadIcon />
-                </span>
-                Upload Game
-            </a>
-            <a class="header-btn" href="/">Game Jams</a>
-        </div>
+        <a class="header-btn" class:active={currentUrl == "/"} href="/"
+            >Browse Games</a
+        >
+        <a
+            class="header-btn"
+            class:active={currentUrl == "/game/new/"}
+            href="/game/new"
+        >
+            <span class="h-4 w-4">
+                <UploadIcon />
+            </span>
+            Upload Game
+        </a>
     </div>
     <div class="flex items-center gap-2">
         <form>
-            <input
-                type="text"
-                placeholder="Search..."
-                class="input p-1.5 text-sm"
-            />
+            <input type="text" placeholder="Search..." class="input text-sm" />
         </form>
         <a href="/login" class="btn-outline">Login</a>
         <a href="/register" class="btn-outline btn-secondary"> Register </a>
@@ -33,15 +35,16 @@
 
 <style lang="scss">
     .header-btn {
-        @apply flex h-full items-center font-bold;
-
-        margin: 0 10px;
-        padding: 5px 0;
-        border-top: 4px solid transparent;
-        border-bottom: 4px solid transparent;
+        @apply mx-2 flex h-full items-center font-bold;
+        @apply border-t-4 border-t-transparent;
+        @apply border-b-4 border-b-transparent;
 
         &:hover {
-            border-bottom: 4px solid #ff2449;
+            @apply border-b-4 border-b-primary;
         }
+    }
+
+    .active {
+        @apply border-b-4 border-b-primary;
     }
 </style>
