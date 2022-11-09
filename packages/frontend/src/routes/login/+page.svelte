@@ -4,53 +4,35 @@
     import Input from "$components/core/Input.svelte";
 </script>
 
-<div class="flex-center h-[100%] pt-16">
-    <form class="w-[500px] rounded border bg-white">
-        <div class="max-h-20 border-b p-8">
-            <h1 class="text-xl font-bold">
-                Log into your <span class="font-medium"
-                    >ytch<span class="text-primary">8.</span>io</span
+<form class="m-auto w-[462px] rounded border bg-white shadow">
+    <div class="border-b p-5 text-2xl font-bold">
+        Log into your Ytch<span class="text-primary">8.</span>io account
+    </div>
+
+    <div class="p-5">
+        <Input label="Username or email" class="w-full" required />
+        <Input label="Password" class="w-full" type="password" required />
+        <div class="flex items-center">
+            <Button>Log in</Button>
+            <span class="ml-2 text-sm text-dim-200">
+                or
+                <a
+                    href="/register"
+                    class="mx-1 font-semibold text-black underline"
+                    >Create account</a
                 >
-                account
-            </h1>
+                ·
+                <a
+                    href="/register"
+                    class="mx-1 font-semibold text-black underline"
+                    >Forgot password</a
+                >
+            </span>
         </div>
+    </div>
 
-        <div class="p-8">
-            <div class="mb-4">
-                <Input label="Username or email" class="w-full" require />
-            </div>
-            <div class="mb-4">
-                <Input
-                    label="Password"
-                    class="w-full"
-                    type="password"
-                    require
-                />
-            </div>
-            <div class="flex items-center border-b">
-                <div class="mb-4">
-                    <Button>Log in</Button>
-                    <span class="ml-2 text-dim-200">
-                        or
-                        <a
-                            href="/login"
-                            class="mx-1 font-semibold text-black underline"
-                            >Create account</a
-                        >
-                        ·
-                        <a
-                            href="/login"
-                            class="mx-1 font-semibold text-black underline"
-                            >Forgot password</a
-                        >
-                    </span>
-                </div>
-            </div>
-
-            <div class="mt-2">
-                <h2 class="mb-3 font-semibold">Or log in with another site</h2>
-                <Button icon={DiGithubBadge} outline>Log in with GitHub</Button>
-            </div>
-        </div>
-    </form>
-</div>
+    <div class="border-t p-5">
+        <h2 class="mb-3 font-semibold">Or log in with another site</h2>
+        <Button icon={DiGithubBadge} outline>Log in with GitHub</Button>
+    </div>
+</form>
