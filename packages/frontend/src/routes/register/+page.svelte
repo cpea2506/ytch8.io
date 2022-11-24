@@ -1,33 +1,68 @@
-<script>
+<script lang="ts">
     import DiGithubBadge from "svelte-icons/di/DiGithubBadge.svelte";
     import Button from "$components/core/Button.svelte";
     import Input from "$components/core/Input.svelte";
+    import ErrorAlert from "$components/core/ErrorAlert.svelte";
+    import type { ActionData } from "./$types.js";
+    import { enhance } from "$app/forms";
+
+    export let form: ActionData;
+
+    const onFocus = () => {
+        if (form) {
+            form.error = false;
+        }
+    };
 </script>
 
-<form class="my-5 mx-auto w-[944px] rounded border bg-white shadow xl:m-auto">
+<div class="my-5 mx-auto w-[944px] rounded border bg-white shadow xl:m-auto">
     <div class="border-b p-5 text-2xl font-bold">
         Create account on Ytch<span class="text-primary">8.</span>io
     </div>
 
     <div class="flex">
         <div class="flex-1">
-            <div class="p-5">
-                <Input label="Username" class="w-full" required />
+            <form class="p-5" method="post" use:enhance>
+                {#if form?.error}
+                    <ErrorAlert message={form?.message} />
+                {/if}
+
                 <Input
+                    on:focus={onFocus}
+                    label="Username"
+                    name="username"
+                    type="text"
+                    required
+                />
+                <Input
+                    on:focus={onFocus}
                     label="Password"
-                    class="w-full"
+                    name="password"
                     type="password"
                     required
                 />
                 <Input
+                    on:focus={onFocus}
                     label="Confirm Password"
-                    class="w-full"
+                    name="confirm-password"
                     type="password"
                     required
                 />
-                <Input label="Email" class="w-full" required />
+                <Input
+                    on:focus={onFocus}
+                    label="Email"
+                    type="email"
+                    name="email"
+                    required
+                />
                 <label class="mb-5 flex items-center" for="checkbox">
-                    <input id="checkbox" type="checkbox" required />
+                    <input
+                        on:focus={onFocus}
+                        id="checkbox"
+                        class="rounded"
+                        type="checkbox"
+                        required
+                    />
                     <span class="ml-2 text-sm"
                         >I accept the <a
                             href="/login"
@@ -46,7 +81,7 @@
                         >
                     </span>
                 </div>
-            </div>
+            </form>
             <div class="border-t p-5">
                 <h2 class="mb-3 font-semibold">Or log in with another site</h2>
                 <Button icon={DiGithubBadge} outline>Log in with GitHub</Button>
@@ -69,4 +104,4 @@
             </div>
         </div>
     </div>
-</form>
+</div>

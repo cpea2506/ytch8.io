@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ["./src/**/*.{svelte, scss}"],
+    content: [
+        "./src/**/*.{svelte, scss}",
+        "./node_modules/flowbite-svelte/**/*.{svelte,ts}",
+    ],
+    plugins: [require("flowbite/plugin")],
     theme: {
         extend: {
             colors: {

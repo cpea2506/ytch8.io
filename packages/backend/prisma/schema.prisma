@@ -16,13 +16,12 @@ enum Role {
 }
 
 model User {
-    id          BigInt    @id(map: "primary") @default(autoincrement())
-    username    String // use for login
-    accountName String // use for display
-    password    String
-    role        Role      @default(Player)
-    age         Int
-    Comment     Comment[]
+    id       BigInt    @id(map: "primary") @default(autoincrement())
+    username String // use for login
+    email    String    @unique // use for display 
+    password String
+    role     Role      @default(Player)
+    Comment  Comment[]
 }
 
 model Game {

@@ -3,8 +3,6 @@ import CORSWhitelist from "./config/cors";
 import express, { Request, Response, Application } from "express";
 import userRouter from "./user/router";
 import morgan from "morgan";
-import swaggerUi from "swagger-ui-express";
-import swaggerSpec from "./config/swagger";
 
 const app: Application = express();
 
@@ -17,7 +15,6 @@ app.use(cors(CORSWhitelist as CorsOptions));
 app.use(express.json());
 app.use(morgan("logger_format"));
 app.use(express.urlencoded({ extended: true }));
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 /* -------------
    Main route

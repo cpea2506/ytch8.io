@@ -20,6 +20,7 @@
         "autoprefixer": "^10.4.8",
         "eslint-plugin-svelte": "^2.10.0",
         "eslint_d": "^12.2.0",
+        "flowbite-svelte": "^0.28.1",
         "postcss": "^8.4.16",
         "postcss-html": "^1.5.0",
         "prettier": "^2.7.1",
@@ -49,6 +50,12 @@
     },
     "type": "module",
     "dependencies": {
+        "@commitlint/cli": "^17.1.2",
+        "@commitlint/config-conventional": "^17.1.0",
+        "axios": "^1.2.0",
+        "concurrently": "^7.4.0",
+        "husky": "^8.0.1",
+        "svelte-carousel": "^1.0.20",
         "svelte-icons": "^2.1.0"
     }
 }

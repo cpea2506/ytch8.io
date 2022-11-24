@@ -51,7 +51,7 @@ $secondary: #2e8eff;
     }
 
     .input {
-        @apply my-[6px] rounded border-2 border-dim p-2 focus:outline-none;
+        @apply my-[6px] rounded border-dim focus:outline-none;
     }
 }
 
