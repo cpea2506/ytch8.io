@@ -2,11 +2,15 @@ import PrismaDB from "@/database/index";
 import { Request, Response } from "express";
 
 export async function getPlayerInfo(req: Request, res: Response) {
-    const { userId } = req.params;
+    const { userid } = req.params;
 
-    const user = PrismaDB.instance.user.findUnique({
+    const user = await PrismaDB.instance.user.findUnique({
         where: {
-            id: BigInt(userId),
+            id: BigInt(userid),
+        },
+        select: {
+            username: true,
+            email: true,
         },
     });
 
@@ -39,7 +43,6 @@ export async function register(req: Request, res: Response) {
 
 export async function login(req: Request, res: Response) {
     const { email, password } = req.body;
-    console.log(email, password);
 
     const user = await PrismaDB.instance.user.findFirst({
         where: {
