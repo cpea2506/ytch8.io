@@ -1,12 +1,13 @@
 <script lang="ts">
     import { fly } from "svelte/transition";
+    import { page } from "$app/stores";
 
     const duration = 250;
 
-    export let url = "";
+    $: currentUrl = $page.url.pathname;
 </script>
 
-{#key url}
+{#key currentUrl}
     <div
         in:fly={{ x: -5, y: 3, duration, delay: duration }}
         out:fly={{ x: 5, duration }}

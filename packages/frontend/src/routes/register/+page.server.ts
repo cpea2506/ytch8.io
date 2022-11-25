@@ -3,8 +3,14 @@ import { redirect } from "@sveltejs/kit";
 import { invalid } from "@sveltejs/kit";
 import * as db from "$api/db";
 
+export const load: PageServerLoad = async ({ locals }) => {
+    if (locals.userid) {
+        throw redirect(303, "/");
+    }
+};
+
 export const actions: Actions = {
-    default: async ({ request, event }) => {
+    default: async ({ request }) => {
         const formData = await request.formData();
         const email = formData.get("email");
         const username = formData.get("username");

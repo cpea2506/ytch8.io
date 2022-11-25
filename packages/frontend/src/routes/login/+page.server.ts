@@ -1,9 +1,25 @@
-import type { Actions } from "./$types.js";
+import type { Actions, PageServerLoad } from "./$types.js";
 import * as db from "$api/db";
 import { invalid, redirect } from "@sveltejs/kit";
 
+export const load: PageServerLoad = async ({ locals }) => {
+    if (locals.userid) {
+        throw redirect(303, "/");
+    }
+
+    const [error, data] = await db.getUser(locals.userid);
+
+    if (error) {
+        return;
+    }
+
+    return {
+        user: data,
+    };
+};
+
 export const actions: Actions = {
-    default: async ({ cookies, request }) => {
+    default: async ({ request, cookies }) => {
         const formData = await request.formData();
         const email = formData.get("email");
         const password = formData.get("password");
@@ -15,7 +31,7 @@ export const actions: Actions = {
         }
 
         if (result) {
-            cookies.set("sessionId", result.data);
+            cookies.set("userid", result.data);
 
             throw redirect(303, "/");
         }

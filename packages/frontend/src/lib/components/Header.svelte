@@ -1,8 +1,10 @@
 <script>
     import UploadIcon from "svelte-icons/ti/TiUpload.svelte";
     import { page } from "$app/stores";
+    import UserMenu from "./UserMenu.svelte";
 
     $: currentUrl = $page.url.pathname;
+    $: user = $page.data.user;
 </script>
 
 <div class="flex bg-white px-5 shadow">
@@ -54,8 +56,12 @@
                 />
             </div>
         </form>
-        <a href="/login" class="btn-outline">Login</a>
-        <a href="/register" class="btn-outline btn-secondary"> Register </a>
+        {#if user}
+            <UserMenu />
+        {:else}
+            <a href="/login" class="btn-outline">Login</a>
+            <a href="/register" class="btn-outline btn-secondary"> Register </a>
+        {/if}
     </div>
 </div>
 

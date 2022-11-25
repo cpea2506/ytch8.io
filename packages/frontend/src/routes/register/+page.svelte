@@ -2,7 +2,7 @@
     import DiGithubBadge from "svelte-icons/di/DiGithubBadge.svelte";
     import Button from "$components/core/Button.svelte";
     import Input from "$components/core/Input.svelte";
-    import ErrorAlert from "$components/core/ErrorAlert.svelte";
+    import Alert from "$components/core/Alert.svelte";
     import type { ActionData } from "./$types.js";
     import { enhance } from "$app/forms";
 
@@ -24,7 +24,9 @@
         <div class="flex-1">
             <form class="p-5" method="post" use:enhance>
                 {#if form?.error}
-                    <ErrorAlert message={form?.message} />
+                    <Alert type="error">
+                        {form?.message}
+                    </Alert>
                 {/if}
 
                 <Input
