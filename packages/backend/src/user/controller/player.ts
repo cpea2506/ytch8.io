@@ -11,6 +11,7 @@ export async function getPlayerInfo(req: Request, res: Response) {
         select: {
             username: true,
             email: true,
+            image: true,
         },
     });
 

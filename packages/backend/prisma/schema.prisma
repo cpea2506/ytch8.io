@@ -20,6 +20,7 @@ model User {
     username String // use for login
     email    String    @unique // use for display 
     password String
+    image    String?
     role     Role      @default(Player)
     Comment  Comment[]
 }

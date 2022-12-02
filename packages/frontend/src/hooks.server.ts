@@ -1,4 +1,4 @@
-import type { Handle } from "@sveltejs/kit";
+import type { Handle, HandleServerError } from "@sveltejs/kit";
 
 export const handle: Handle = async ({ event, resolve }) => {
     const userid = event.cookies.get("userid");
@@ -8,4 +8,11 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
 
     return resolve(event);
+};
+
+export const handleError: HandleServerError = ({ error }) => {
+    return {
+        message: "Oops! Look what you make me generate this page! :D",
+        code: error?.code ?? "UNKNOWN",
+    };
 };
