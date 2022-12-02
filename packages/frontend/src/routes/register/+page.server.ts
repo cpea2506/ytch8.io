@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from "./$types.js";
 import { redirect } from "@sveltejs/kit";
 import { invalid } from "@sveltejs/kit";
-import * as db from "$api/db";
+import * as db from "$api/db/index.js";
 
 export const load: PageServerLoad = async ({ locals }) => {
     if (locals.userid) {
