@@ -2,9 +2,8 @@
     import DiGithubBadge from "svelte-icons/di/DiGithubBadge.svelte";
     import Button from "$components/core/Button.svelte";
     import Input from "$components/core/Input.svelte";
-    import { Alert } from "flowbite-svelte";
+    import { Alert, Checkbox } from "flowbite-svelte";
     import type { ActionData } from "./$types.js";
-    import { enhance } from "$app/forms";
 
     export let form: ActionData;
 
@@ -22,7 +21,7 @@
 
     <div class="flex">
         <div class="flex-1">
-            <form class="p-5" method="post" use:enhance>
+            <form class="p-5" method="post">
                 {#if form?.error}
                     <Alert color="red">{form?.message}</Alert>
                 {/if}
@@ -32,43 +31,35 @@
                     label="Username"
                     name="username"
                     type="text"
-                    required
                 />
                 <Input
                     on:focus={onFocus}
                     label="Password"
                     name="password"
                     type="password"
-                    required
                 />
                 <Input
                     on:focus={onFocus}
                     label="Confirm Password"
                     name="confirm-password"
                     type="password"
-                    required
                 />
                 <Input
                     on:focus={onFocus}
                     label="Email"
                     type="email"
                     name="email"
-                    required
                 />
+
                 <label class="mb-5 flex items-center" for="checkbox">
-                    <input
-                        on:focus={onFocus}
-                        id="checkbox"
-                        class="rounded"
-                        type="checkbox"
-                        required
-                    />
-                    <span class="ml-2 text-sm"
-                        >I accept the <a
-                            href="/login"
-                            class="text-primary underline">Term of Service</a
-                        ></span
-                    >
+                    <Checkbox on:focus={onFocus}>
+                        I accept the
+                        <a
+                            href="/register"
+                            class="ml-1 text-primary hover:underline"
+                            >Term of Service</a
+                        >.
+                    </Checkbox>
                 </label>
                 <div class="flex items-center">
                     <Button>Create account</Button>

@@ -4,7 +4,6 @@
     import Input from "$components/core/Input.svelte";
     import { Alert } from "flowbite-svelte";
     import type { ActionData } from "./$types.js";
-    import { enhance } from "$app/forms";
 
     export let form: ActionData;
 
@@ -20,23 +19,16 @@
         Log into your Ytch<span class="text-primary">8.</span>io account
     </div>
 
-    <form class="p-5" method="post" use:enhance>
+    <form class="p-5" method="post">
         {#if form?.error}
             <Alert color="red">{form?.message}</Alert>
         {/if}
-        <Input
-            on:focus={onFocus}
-            type="email"
-            label="Email"
-            name="email"
-            required
-        />
+        <Input on:focus={onFocus} label="Email" type="email" name="email" />
         <Input
             on:focus={onFocus}
             label="Password"
             type="password"
             name="password"
-            required
         />
         <div class="flex items-center">
             <Button>Log in</Button>

@@ -1,23 +1,23 @@
 {
-  "name": "ytch8-io",
-  "private": true,
-  "scripts": {
-    "frontend": "yarn workspace frontend dev",
-    "backend": "yarn workspace backend dev",
-    "dev": "concurrently --kill-others-on-fail \"yarn frontend\"  \"yarn backend\"",
-    "lint": "yarn workspaces run lint",
-    "format": "yarn workspaces run format"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "dependencies": {
-    "concurrently": "^7.4.0"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^17.1.2",
-    "@commitlint/config-conventional": "^17.1.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3"
-  }
+    "name": "ytch8-io",
+    "private": true,
+    "scripts": {
+        "frontend": "yarn workspace frontend dev",
+        "backend": "yarn workspace backend dev",
+        "dev": "concurrently --kill-others-on-fail \"yarn backend\"  \"yarn frontend\"",
+        "lint": "yarn workspaces run lint",
+        "format": "yarn workspaces run format"
+    },
+    "workspaces": [
+        "packages/*"
+    ],
+    "dependencies": {
+        "concurrently": "^7.4.0"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.1.2",
+        "@commitlint/config-conventional": "^17.1.0",
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3"
+    }
 }

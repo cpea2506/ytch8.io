@@ -1,20 +1,13 @@
 <script lang="ts">
+    import clx from "classnames";
     import type { SvelteComponent } from "svelte";
 
     export let icon: typeof SvelteComponent | undefined = undefined;
     export let outline = false;
-
-    let extraClass = "";
-    export { extraClass as class };
-
-    if (extraClass.length > 0) {
-        // add space before to distinguish from other classes
-        extraClass = ` ${extraClass}`;
-    }
 </script>
 
 <button
-    class="inline-flex justify-between{extraClass}"
+    class={clx("inline-flex justify-between", $$props.class)}
     class:btn-outline={outline}
     class:btn={!outline}
     on:click

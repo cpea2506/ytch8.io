@@ -1,25 +1,23 @@
 <script lang="ts">
+    import { Label, Input } from "flowbite-svelte";
+
     export let label: string;
-    const { placeholder = "Type here", type = "text" } = $$restProps;
 
-    let extraClass = "";
-    export { extraClass as class };
+    let placeholder = "";
 
-    if (extraClass.length > 0) {
-        extraClass = `${extraClass} `;
+    switch ($$props.type) {
+        case "password":
+            placeholder = "•••••••••";
+            break;
+        case "email":
+            placeholder = "Johnu@example.com";
+            break;
+        default:
+            placeholder = "Try something";
     }
 </script>
 
-<div class="mb-5">
-    <label for={label}>
-        <div class="text-sm font-semibold">{label}</div>
-        <input
-            on:focus
-            id={label}
-            {type}
-            {placeholder}
-            class="{extraClass}input w-full focus:border-blue-500 focus:ring-blue-500"
-            {...$$restProps}
-        />
-    </label>
-</div>
+<Label class="mb-6 space-y-2" for={label}>
+    <span>{label}</span>
+    <Input on:focus required id={label} {placeholder} {...$$restProps} />
+</Label>
