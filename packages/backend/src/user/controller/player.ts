@@ -56,7 +56,7 @@ export async function login(req: Request, res: Response) {
     });
 
     if (user) {
-        res.status(200).send({
+        return res.status(200).send({
             data: user.id.toString(),
             message: "Login successfully!",
         });
