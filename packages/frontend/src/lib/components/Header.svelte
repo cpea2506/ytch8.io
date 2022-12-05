@@ -1,8 +1,8 @@
 <script lang="ts">
     import UploadIcon from "svelte-icons/ti/TiUpload.svelte";
-    import { page } from "$app/stores";
     import FaAngleDown from "svelte-icons/fa/FaAngleDown.svelte";
     import { Dropdown, DropdownItem, Avatar, NavBrand } from "flowbite-svelte";
+    import { page } from "$app/stores";
 
     $: currentUrl = $page.url.pathname;
     $: user = $page.data.user;
@@ -10,7 +10,7 @@
 
 <div class="flex bg-white px-5 shadow">
     <div class="flex flex-1 space-x-4">
-        <NavBrand>
+        <NavBrand href="/">
             <img src="/images/logo.svg" alt="ytch8 logo" />
         </NavBrand>
         <a class="header-btn" class:active={currentUrl == "/"} href="/"
@@ -39,9 +39,12 @@
                     <div class="font-bold">Pro User</div>
                     <div class="truncate">{user.email}</div>
                 </DropdownItem>
-                <DropdownItem>My games</DropdownItem>
-                <DropdownItem>Profile</DropdownItem>
-                <DropdownItem slot="footer"
+                <DropdownItem href="/game">My games</DropdownItem>
+                <DropdownItem href="/settings">Settings</DropdownItem>
+                <DropdownItem
+                    slot="footer"
+                    data-sveltekit-reload=""
+                    href="/logout"
                     ><span class="text-primary">Logout</span></DropdownItem
                 >
             </Dropdown>

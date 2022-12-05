@@ -1,10 +1,30 @@
 <script lang="ts">
     import Button from "$components/core/Button.svelte";
     import Input from "$components/core/Input.svelte";
-    import TextArea from "$components/core/TextArea.svelte";
+    import Textarea from "$components/core/TextArea.svelte";
+    import {
+        Dropzone,
+        Select,
+        Label,
+        Fileupload,
+        Helper,
+    } from "flowbite-svelte";
 
-    let imageSrc: string | undefined;
-    let uploadInput: HTMLInputElement;
+    let gameImage: string | undefined;
+    let gameFile: string;
+    let selectedGenre: string;
+    let genres = [
+        { name: "Action", value: "action" },
+        { name: "Adventure", value: "adventure" },
+        { name: "Fighting", value: "fighting" },
+        { name: "Platformer", value: "platformer" },
+        { name: "Role Playing", value: "roleplaying" },
+        { name: "Shooter", value: "shooter" },
+        { name: "Simulation", value: "simulation" },
+        { name: "Survival", value: "survival" },
+        { name: "Strategy", value: "strategy" },
+        { name: "Other", value: "other" },
+    ];
 
     const onImageChange = (
         event: Event & { currentTarget: EventTarget & HTMLInputElement },
@@ -15,7 +35,7 @@
             let reader = new FileReader();
             reader.readAsDataURL(image);
             reader.onload = (ev: ProgressEvent<FileReader>) => {
-                imageSrc = ev.target?.result?.toString();
+                gameImage = ev.target?.result?.toString();
             };
         }
     };
@@ -23,7 +43,7 @@
 
 <div class="my-5 mx-auto w-[960px] rounded border bg-white shadow">
     <div class="border-b p-5 text-2xl font-bold">🌈 Upload new game</div>
-    <div class="flex p-5">
+    <form class="flex p-5">
         <div class="flex-1">
             <div>
                 <Input label="Title" class="w-[524px]" />
@@ -35,69 +55,62 @@
             </div>
             <h2 class="title">Uploads</h2>
             <div>
-                <Button>Upload file</Button>
-                <span class="ml-2"
+                <Fileupload
+                    type="file"
+                    bind:value={gameFile}
+                    inputClass="block w-[524px] cursor-pointer rounded-lg border border-gray-300 bg-gray-50 text-gray-900 focus:outline-none"
+                    hidden
+                />
+                <Helper class="ml-2"
                     >Upload your <span class="font-bold">.zip</span> or
-                    <span class="font-bold">.html</span> game file</span
+                    <span class="font-bold">.html</span> game file</Helper
                 >
             </div>
+
             <h2 class="title">Detail</h2>
             <div class="flex flex-col">
-                <div class="mb-5">
-                    <div class="font-bold">Genres</div>
-                    <select class="input w-[524px] appearance-none">
-                        <option disabled selected>No Genre</option>
-                        <option>Action</option>
-                        <option>Adventure</option>
-                        <option>Fighting</option>
-                        <option>Platformer</option>
-                        <option>Role Playing</option>
-                        <option>Shooter</option>
-                        <option>Simulation</option>
-                        <option>Survival</option>
-                        <option>Strategy</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-                <TextArea
+                <Label class="mb-6 space-y-2">
+                    <span class="font-bold">Genres</span>
+                    <Select
+                        class="w-[524px]"
+                        items={genres}
+                        bind:value={selectedGenre}
+                    />
+                </Label>
+                <Textarea
                     label="Description"
                     placeholder="This will markup your content game page"
                 />
             </div>
-            <Button class="mt-5">Save me</Button>
+            <Button class="mt-6">Save me</Button>
         </div>
         <div>
-            {#if imageSrc}
+            {#if gameImage}
                 <img
                     class="h-[300px] w-[315px] rounded shadow"
-                    src={imageSrc}
+                    src={gameImage}
                     alt="game cover"
                 />
                 <div class="mt-2 text-center">
                     <button
                         class="underline"
-                        on:click={() => (imageSrc = undefined)}
+                        on:click={() => (gameImage = undefined)}
                     >
                         Remove image
                     </button>
                 </div>
             {:else}
-                <div
-                    class="flex-col-center h-[300px] w-[315px] border border-dashed border-dim"
-                >
-                    <input
-                        type="file"
-                        bind:this={uploadInput}
-                        on:change={onImageChange}
-                        hidden
-                    />
-                    <Button on:click={() => uploadInput.click()}
-                        >Upload cover image</Button
-                    >
-                </div>
+                <Dropzone divClass="h-[300px] w-[315px]" id="dropzone-file">
+                    <p class="mb-2 text-sm text-gray-500">
+                        <span class="font-semibold text-primary"
+                            >Click to upload</span
+                        > your game cover
+                    </p>
+                    <p class="text-xs text-gray-500">SVG, PNG, JPG or GIF</p>
+                </Dropzone>
             {/if}
         </div>
-    </div>
+    </form>
 </div>
 
 <style lang="postcss">

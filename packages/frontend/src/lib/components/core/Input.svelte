@@ -1,7 +1,8 @@
 <script lang="ts">
     import { Label, Input } from "flowbite-svelte";
 
-    export let label: string;
+    export let label = "";
+    export let value = "";
 
     let placeholder = "";
 
@@ -19,5 +20,12 @@
 
 <Label class="mb-6 space-y-2" for={label}>
     <span>{label}</span>
-    <Input on:focus required id={label} {placeholder} {...$$restProps} />
+    <Input
+        on:focus
+        required
+        bind:value
+        id={label}
+        {placeholder}
+        {...$$restProps}
+    />
 </Label>

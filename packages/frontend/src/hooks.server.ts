@@ -7,12 +7,16 @@ export const handle: Handle = async ({ event, resolve }) => {
         event.locals.userid = userid;
     }
 
-    return resolve(event);
+    return await resolve(event);
 };
 
 export const handleError: HandleServerError = ({ error }) => {
+    const err = error as App.Error;
+
     return {
-        message: "Oops! Look what you make me generate this page! :D",
-        code: error?.code ?? "UNKNOWN",
+        message:
+            err?.message ||
+            "Oops! Look what you make me generate this page! :D",
+        code: err?.code ?? "UNKNOWN",
     };
 };
