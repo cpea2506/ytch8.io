@@ -23,19 +23,21 @@ model User {
     image    String?
     role     Role      @default(Player)
     Comment  Comment[]
+    Game     Game[]
 }
 
 model Game {
     id             BigInt           @id(map: "primary") @default(autoincrement())
     name           String
     description    String
-    authorName     String
     dateCreated    DateTime         @default(now())
-    donwloadDetail DownloadDetail[]
+    downloadDetail DownloadDetail[]
     playedTime     Int              @default(0)
     Comment        Comment[]
     Category       Category?        @relation(fields: [categoryId], references: [id])
     categoryId     BigInt?
+    authorId       BigInt
+    User           User             @relation(fields: [authorId], references: [id])
 }
 
 model Comment {
