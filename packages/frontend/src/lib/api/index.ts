@@ -5,7 +5,7 @@ const config = {
     baseURL: PUBLIC_API,
     timeout: 5000,
     headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
     },
     params: {},
 };
