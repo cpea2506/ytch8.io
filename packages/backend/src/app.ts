@@ -2,6 +2,7 @@ import cors, { CorsOptions } from "cors";
 import CORSWhitelist from "./config/cors";
 import express, { Request, Response, Application } from "express";
 import userRouter from "./user/router";
+import categoryRouter from "./category/router";
 import gameRouter from "./game/router";
 import morgan from "morgan";
 
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 ------------- */
 
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/game", gameRouter);
 app.use("/", (_: Request, res: Response) =>
     res.status(400).send("Great you have found an empty treasure box!"),

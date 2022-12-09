@@ -6,7 +6,17 @@ declare namespace App {
         userid: string | null;
     }
 
-    // interface PageData {}
+    interface PageData {
+        user: {
+            username: string;
+            email: string;
+            image: string;
+        };
+        genres: Array<{
+            id: string;
+            name: string;
+        }>;
+    }
 
     interface Error {
         message: string;

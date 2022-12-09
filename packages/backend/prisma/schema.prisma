@@ -15,15 +15,21 @@ enum Role {
     Player
 }
 
+enum External {
+    Google
+    Github
+}
+
 model User {
     id       BigInt    @id(map: "primary") @default(autoincrement())
     username String // use for login
     email    String    @unique // use for display 
     password String
-    image    String?
+    image    String    @default("https://iconarchive.com/download/i104802/papirus-team/papirus-status/avatar-default.ico")
     role     Role      @default(Player)
     Comment  Comment[]
     Game     Game[]
+    external External?
 }
 
 model Game {
@@ -31,11 +37,13 @@ model Game {
     name           String
     description    String
     dateCreated    DateTime         @default(now())
+    path           String
+    image          String
     downloadDetail DownloadDetail[]
     playedTime     Int              @default(0)
     Comment        Comment[]
-    Category       Category?        @relation(fields: [categoryId], references: [id])
-    categoryId     BigInt?
+    Category       Category         @relation(fields: [categoryId], references: [id])
+    categoryId     BigInt
     authorId       BigInt
     User           User             @relation(fields: [authorId], references: [id])
 }
@@ -61,6 +69,5 @@ model DownloadDetail {
 model Category {
     id   BigInt @id(map: "primary") @default(autoincrement())
     name String
-    age  Int
     Game Game[]
 }

@@ -8,7 +8,7 @@
     $: user = $page.data.user;
 </script>
 
-<div class="flex bg-white px-5 shadow">
+<div class="z-20 flex bg-white px-5 shadow">
     <div class="flex flex-1 space-x-4">
         <NavBrand href="/">
             <img src="/images/logo.svg" alt="ytch8 logo" />
@@ -26,6 +26,9 @@
             </span>
             Upload Game
         </a>
+        <a class="header-btn" href="/#category">Category</a>
+        <a class="header-btn" href="/#new-arrival">New Arrival</a>
+        <a class="header-btn" href="/about">About us</a>
     </div>
     {#if user}
         <div class="my-2 flex cursor-pointer items-center" id="user-menu">
@@ -34,13 +37,13 @@
             <div class="ml-2 h-4 w-4">
                 <FaAngleDown />
             </div>
-            <Dropdown triggeredBy="#user-menu">
+            <Dropdown frameClass="max-w-[200px]" triggeredBy="#user-menu">
                 <DropdownItem slot="header">
                     <div class="font-bold">Pro User</div>
                     <div class="truncate">{user.email}</div>
                 </DropdownItem>
                 <DropdownItem href="/game">My games</DropdownItem>
-                <DropdownItem href="/settings">Settings</DropdownItem>
+                <DropdownItem href="/settings/profile">Settings</DropdownItem>
                 <DropdownItem
                     slot="footer"
                     data-sveltekit-reload=""

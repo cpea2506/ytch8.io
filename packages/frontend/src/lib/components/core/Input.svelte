@@ -2,6 +2,7 @@
     import { Label, Input } from "flowbite-svelte";
 
     export let label = "";
+    export let labelClass = "";
     export let value = "";
 
     let placeholder = "";
@@ -19,7 +20,7 @@
 </script>
 
 <Label class="mb-6 space-y-2" for={label}>
-    <span>{label}</span>
+    <span class={labelClass}>{label}</span>
     <Input
         on:focus
         required

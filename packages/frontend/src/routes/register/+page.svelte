@@ -2,10 +2,12 @@
     import DiGithubBadge from "svelte-icons/di/DiGithubBadge.svelte";
     import Button from "$components/core/Button.svelte";
     import Input from "$components/core/Input.svelte";
-    import { Alert, Checkbox } from "flowbite-svelte";
+    import { Alert, Checkbox, Modal, Spinner } from "flowbite-svelte";
     import type { ActionData } from "./$types.js";
+    import GoogleButton from "$components/core/GoogleButton.svelte";
 
     export let form: ActionData;
+    let overlay = false;
 
     const onFocus = () => {
         if (form) {
@@ -15,15 +17,21 @@
 </script>
 
 <div class="my-5 mx-auto w-[944px] rounded border bg-white shadow xl:m-auto">
+    <Modal bind:open={overlay} size="xs" permanent>
+        <div class="space-y-2 text-center">
+            <Spinner color="red" />
+            <p>Prepare for the new world coming...</p>
+        </div>
+    </Modal>
     <div class="border-b p-5 text-2xl font-bold">
         Create account on Ytch<span class="text-primary">8.</span>io
     </div>
 
     <div class="flex">
         <div class="flex-1">
-            <form class="p-5" method="post">
+            <form class="p-5" method="post" action="?/register">
                 {#if form?.error}
-                    <Alert color="red">{form?.message}</Alert>
+                    <Alert class="mb-6" color="red">{form?.message}</Alert>
                 {/if}
 
                 <Input
@@ -73,10 +81,21 @@
                     </span>
                 </div>
             </form>
-            <div class="border-t p-5">
+            <form class="border-t p-5" action="?/loginWithGithub" method="post">
                 <h2 class="mb-3 font-semibold">Or log in with another site</h2>
-                <Button icon={DiGithubBadge} outline>Log in with GitHub</Button>
-            </div>
+                <div class="flex space-x-2">
+                    <Button outline on:click={() => (overlay = true)}>
+                        <div slot="icon" class="h-6 w-6">
+                            <DiGithubBadge />
+                        </div>
+                        Log in with GitHub
+                    </Button>
+                    <GoogleButton
+                        bind:isLoading={overlay}
+                        on:click={() => (overlay = true)}
+                    />
+                </div>
+            </form>
         </div>
         <div class="flex flex-1 flex-col gap-5 border-l p-5">
             <div class="text-xl font-bold">

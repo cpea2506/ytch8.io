@@ -1,5 +1,5 @@
 node_modules
-build
+[b]uild
 .svelte-kit
 package
 !.env.example

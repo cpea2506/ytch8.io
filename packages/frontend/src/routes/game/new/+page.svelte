@@ -9,27 +9,19 @@
         Fileupload,
         Helper,
     } from "flowbite-svelte";
+    import { page } from "$app/stores";
 
+    const { genres } = $page.data;
     let gameImage: string | undefined;
     let gameFile: string;
     let selectedGenre: string;
-    let genres = [
-        { name: "Action", value: "action" },
-        { name: "Adventure", value: "adventure" },
-        { name: "Fighting", value: "fighting" },
-        { name: "Platformer", value: "platformer" },
-        { name: "Role Playing", value: "roleplaying" },
-        { name: "Shooter", value: "shooter" },
-        { name: "Simulation", value: "simulation" },
-        { name: "Survival", value: "survival" },
-        { name: "Strategy", value: "strategy" },
-        { name: "Other", value: "other" },
-    ];
 
-    const onImageChange = (
-        event: Event & { currentTarget: EventTarget & HTMLInputElement },
-    ) => {
-        let image = event.currentTarget.files?.item(0);
+    const onImageChange = (event: Event) => {
+        let correct_event = event as Event & {
+            currentTarget: EventTarget & HTMLInputElement;
+        };
+
+        let image = correct_event.currentTarget.files?.item(0);
 
         if (image) {
             let reader = new FileReader();
@@ -73,7 +65,11 @@
                     <span class="font-bold">Genres</span>
                     <Select
                         class="w-[524px]"
-                        items={genres}
+                        items={genres.map(({ id, name }) => ({
+                            value: id,
+                            name,
+                        }))}
+                        placeholder="Select your genres"
                         bind:value={selectedGenre}
                     />
                 </Label>
@@ -100,7 +96,11 @@
                     </button>
                 </div>
             {:else}
-                <Dropzone divClass="h-[300px] w-[315px]" id="dropzone-file">
+                <Dropzone
+                    on:change={onImageChange}
+                    divClass="h-[300px] w-[315px]"
+                    id="dropzone-file"
+                >
                     <p class="mb-2 text-sm text-gray-500">
                         <span class="font-semibold text-primary"
                             >Click to upload</span

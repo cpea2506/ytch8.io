@@ -6,4 +6,4 @@ if (error) {
     throw error.message;
 }
 
-export const { PORT } = process.env;
+export const { PORT, GOOGLE_CLIENT_ID } = process.env;
